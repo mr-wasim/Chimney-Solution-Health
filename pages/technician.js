@@ -72,7 +72,7 @@ export default function Technician() {
                 <input type="number" min="0" max="100" onChange={e => handleMetricChange('motorHealth', Number(e.target.value))} className="w-full p-2 rounded bg-black/20 mb-2" />
                 <label className="block text-sm">Filter health</label>
                 <input type="number" min="0" max="100" onChange={e => handleMetricChange('filterHealth', Number(e.target.value))} className="w-full p-2 rounded bg-black/20 mb-2" />
-                <label className="block text-sm">Pressure (pcv) health</label>
+                <label className="block text-sm">PCB health</label>
                 <input type="number" min="0" max="100" onChange={e => handleMetricChange('pcvHealth', Number(e.target.value))} className="w-full p-2 rounded bg-black/20 mb-2" />
                 <label className="block text-sm">Touch health</label>
                 <input type="number" min="0" max="100" onChange={e => handleMetricChange('touchHealth', Number(e.target.value))} className="w-full p-2 rounded bg-black/20 mb-2" />
