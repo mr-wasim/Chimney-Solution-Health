@@ -1,5 +1,5 @@
-import dbConnect from "../../lib/mongodb";
-import Report from "../../models/Report";
+import dbConnect from "../../../lib/mongodb";
+import Report from "../../../models/Report";
 
 export default async function handler(req, res) {
   await dbConnect()
