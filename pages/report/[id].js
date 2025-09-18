@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { FaHeartbeat, FaTools, FaExclamationTriangle, FaCheckCircle } from 'react-icons/fa'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import Image from "next/image";
 
 
 export default function ReportPage() {
@@ -66,7 +67,7 @@ export default function ReportPage() {
 
   return (
     <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 min-h-screen text-white">
-      <Header title={`Health Report — ${data.clientName}`} />
+      <Header/>
 
       <main className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-10">
         {/* top section */}
@@ -91,14 +92,16 @@ export default function ReportPage() {
                 Product: <strong>{data.product}</strong> • Cleaning: <strong>{data.cleaningType}</strong>
               </p>
             </div>
-            <div className="flex flex-col items-center">
-              <img
-                src={data.qrDataUrl}
-                alt="QR Code"
-                className="w-24 h-24 sm:w-28 sm:h-28 bg-white p-2 rounded-2xl shadow-lg"
-              />
-              <p className="text-xs opacity-70 mt-2">Scan to verify report</p>
-            </div>
+         <div className="flex flex-col items-center">
+  <div className="flex items-center gap-2 bg-blue-50 text-blue-700 text-xs px-3 py-2 rounded-xl shadow-sm mt-2">
+    <span className="text-sm">ℹ️</span>
+    <span>
+      This report is for informational use only; not valid for warranty,
+      service, or legal claims.
+    </span>
+  </div>
+</div>
+
           </div>
         </motion.section>
 
@@ -135,36 +138,24 @@ export default function ReportPage() {
           transition={{ delay: 0.8, duration: 1 }}
           className="bg-white/10 p-6 sm:p-8 rounded-2xl shadow-xl backdrop-blur-md"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 border-b border-white/30 pb-3">Warnings & Actions</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 border-b border-white/30 pb-3">Warranty Card</h2>
 
           <div className="flex flex-col sm:flex-row gap-6">
-            {/* warnings */}
-            <div
-              className={`flex items-center gap-4 p-4 rounded-2xl shadow-lg ${
-                data.currentScore <= 25 ? 'bg-red-900/80' :
-                data.currentScore <= 50 ? 'bg-yellow-800/70' : 'bg-green-800/70'
-              }`}
-            >
-              <FaExclamationTriangle className="text-3xl animate-bounce" />
-              <div className="text-sm sm:text-base">
-                {data.currentScore <= 25 ? (
-                  <p>
-                    Critical: Immediate service required.{' '}
-                    <a href={`tel:+91${data.clientNumber}`} className="underline text-blue-300">Call now</a>
-                  </p>
-                ) : data.currentScore <= 50 ? (
-                  <p>Warning: Consider service in the next 2–4 weeks.</p>
-                ) : (
-                  <p><FaCheckCircle className="inline text-green-300 mr-2"/> All systems operational.</p>
-                )}
-              </div>
-            </div>
+           
 
             {/* warranty card inline */}
             <div ref={warrantyRef} className="w-full sm:w-96 bg-white rounded-2xl shadow-xl border overflow-hidden text-sm sm:text-base">
               {/* Header */}
               <div className="bg-gradient-to-r from-blue-800 to-blue-600 p-5 flex justify-between items-center">
-                <h2 className="text-white font-bold text-lg tracking-wide">CHIMNEY SOLUTIONS</h2>
+                 <div className="w-30 h-30">
+                          <Image
+                            src="/logo.jpeg"      // public folder me aapka logo
+                            alt="Chimney Solutions"
+                            width={100}          // 12*4 = 48px
+                            height={100}
+                            className="object-cover"
+                          />
+                        </div>
                 <div className="bg-white text-red-600 text-xs font-bold px-3 py-1 rounded-full shadow">
                   1 MONTH WARRANTY
                 </div>
@@ -174,9 +165,7 @@ export default function ReportPage() {
               <div className="p-6 space-y-4">
                 <div>
                   <h3 className="text-2xl font-semibold text-blue-700">Warranty Certificate</h3>
-                  <p className="text-gray-500 text-sm">
-                    Serial: {data.serial || "—"} • Model: {data.model || "—"}
-                  </p>
+                 
                 </div>
 
                 <div className="grid grid-cols-3 gap-y-3 text-gray-800">
