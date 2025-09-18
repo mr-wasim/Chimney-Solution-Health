@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     const id = insert.insertedId.toString()
 
     // generate QR that points to public report page
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://chimney-solution-health.vercel.app/'
     const target = `${appUrl}/report/${id}`
     const qrDataUrl = await QRCode.toDataURL(target, { margin: 2, scale: 6 })
 
