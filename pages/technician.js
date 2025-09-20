@@ -140,7 +140,7 @@ export default function Technician() {
           <div className="flex gap-3">
             <button disabled={loading} type="submit" 
               className="px-4 py-2 rounded bg-brand font-semibold">
-              Create Report & QR
+              {loading ? 'Loading…' : 'Create Report & QR'}
             </button>
             <button type="button" 
               onClick={() => { 
