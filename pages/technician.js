@@ -81,7 +81,7 @@ export default function Technician() {
             <option value="deep">Deep cleaning (8 months decay)</option>
           </select>
 
-          {/* ✅ Fixed Metrics Section */}
+          {/* ✅ Metrics Section */}
           <div className="mb-4">
             <h3 className="font-semibold mb-2">Metrics (0-100)</h3>
             {form.product === 'chimney' ? (
@@ -104,6 +104,17 @@ export default function Technician() {
                 <label className="block text-sm">Product Structure health</label>
                 <input type="number" min="0" max="100"
                   onChange={e => handleMetricChange('structureHealth', Number(e.target.value))}
+                  className="w-full p-2 rounded bg-black/20 mb-2" />
+
+                {/* ✅ NEW */}
+                <label className="block text-sm">Motor health</label>
+                <input type="number" min="0" max="100"
+                  onChange={e => handleMetricChange('motorHealth', Number(e.target.value))}
+                  className="w-full p-2 rounded bg-black/20 mb-2" />
+
+                <label className="block text-sm">Filter health</label>
+                <input type="number" min="0" max="100"
+                  onChange={e => handleMetricChange('filterHealth', Number(e.target.value))}
                   className="w-full p-2 rounded bg-black/20 mb-2" />
               </>
             ) : (
